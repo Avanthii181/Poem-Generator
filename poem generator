@@ -1,0 +1,43 @@
+import random
+
+# Define word lists for different themes
+nature_words = ["leaves", "wind", "sky", "mountains", "river", "sun", "clouds"]
+love_words = ["heart", "passion", "love", "dream", "together", "soul", "whisper"]
+sadness_words = ["tears", "rain", "alone", "darkness", "grief", "pain", "empty"]
+
+# Define templates for poems
+templates = [
+    "The {word1} is {word2}, as {word3} fills the air.",
+    "In the {word1}, I feel {word2}, my heart is {word3}.",
+    "When the {word1} falls, I {word2} in {word3}.",
+    "The {word1} whispers {word2}, while {word3} guides me on.",
+]
+
+# Function to generate a poem based on theme
+def generate_poetry(theme):
+    # Choose the word list based on the theme
+    if theme == "nature":
+        word_list = nature_words
+    elif theme == "love":
+        word_list = love_words
+    elif theme == "sadness":
+        word_list = sadness_words
+    else:
+        return "Sorry, I don't know poems for that theme."
+
+    # Randomly select words from the list
+    word1, word2, word3 = random.sample(word_list, 3)
+
+    # Randomly choose a template
+    template = random.choice(templates)
+
+    # Fill in the template with the selected words
+    poem = template.format(word1=word1, word2=word2, word3=word3)
+    return poem
+
+# Main code to interact with the user
+theme = input("Enter a theme (nature, love, sadness): ").lower()
+poem = generate_poetry(theme)
+
+print("\nGenerated Poem:\n")
+print(poem)
